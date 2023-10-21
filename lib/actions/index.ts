@@ -10,9 +10,9 @@ export async function scrapeAndStoreProduct(productURL: string) {
     connectedToDB();
 
     const scrapeProduct = await scrapeAmazonProduct(productURL);
-    console.log("🚀 ~ file: index.ts:13 ~ scrapeAndStoreProduct ~ scrapeProduct:", scrapeProduct)
-      
     
+    return scrapeProduct;
+      
   } catch (error) {
     throw new Error(`Failed to create/update product : ${error}`);
   }

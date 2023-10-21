@@ -25,7 +25,7 @@ const SearchBar = () => {
   const [searchPrompt, setSearchPrompt] = useState("");
   const [isLoading, setLoading] = useState(false);
 
-  const hendleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const hendleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const isValidLink = isValid(searchPrompt);
@@ -35,7 +35,8 @@ const SearchBar = () => {
     try {
       setLoading(true);
 
-      const product = use(scrapeAndStoreProduct(searchPrompt));
+      const product = await scrapeAndStoreProduct(searchPrompt);
+      console.log("Product added successfully", { product });
     } catch (error) {
       console.log(error);
     } finally {
